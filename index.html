@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fit Option · Tu antojo, versión fit</title>
+<meta name="description" content="Repostería fit en Bogotá: torta de banano y arándanos, parfait, pancakes con proteína y desayuno fit. Sin azúcar añadida, con ingredientes reales.">
+<meta property="og:title" content="Fit Option · Tu antojo, versión fit">
+<meta property="og:description" content="Postres con proteína y sin azúcar añadida, hechos con ingredientes reales.">
+<meta property="og:image" content="img/torta-hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#2F4A3A; --salvia:#8DA68A; --crema:#F5EFE4; --avena:#D9C7A7; --arandano:#4B4A7A;
+    --texto:#2b332e; --suave:#5d6b62;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Montserrat',sans-serif;color:var(--texto);background:var(--crema);line-height:1.6;font-weight:400}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:500;color:var(--verde);line-height:1.15}
+  .script{font-family:'Allura',cursive;color:var(--arandano);font-weight:400}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;padding:14px 26px;border-radius:40px;text-decoration:none;font-weight:500;font-size:.95rem;transition:transform .15s, opacity .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-verde{background:var(--verde);color:var(--crema)}
+  .btn-linea{border:1.5px solid var(--verde);color:var(--verde)}
+  .eyebrow{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--salvia);font-weight:600}
+
+  /* Barra superior */
+  header{position:sticky;top:0;z-index:10;background:rgba(245,239,228,.94);backdrop-filter:blur(6px);border-bottom:1px solid #e6dccb}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--verde);text-decoration:none;font-weight:600}
+  .logo span{color:var(--salvia)}
+  .nav-links{display:flex;gap:26px;font-size:.88rem}
+  .nav-links a{text-decoration:none;color:var(--suave)}
+  .nav .btn{padding:9px 18px;font-size:.85rem}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* Portada */
+  .hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding:56px 0 64px}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.2rem)}
+  .hero .script{font-size:clamp(2.4rem,5vw,3.4rem);display:block;margin-top:4px}
+  .hero p{margin:22px 0 30px;color:var(--suave);font-size:1.05rem;max-width:460px}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-img{border-radius:180px 180px 18px 18px;overflow:hidden;box-shadow:0 18px 40px rgba(47,74,58,.15);aspect-ratio:4/5}
+  .hero-img img{width:100%;height:100%;object-fit:cover}
+  @media(max-width:820px){.hero{grid-template-columns:1fr;padding-top:30px;gap:30px}.hero-img{max-width:420px;margin:0 auto}}
+
+  /* Pilares */
+  .pilares{background:var(--verde);color:var(--crema);padding:22px 0}
+  .pilares ul{list-style:none;display:flex;justify-content:space-around;flex-wrap:wrap;gap:12px 28px;font-size:.9rem;letter-spacing:.04em}
+  .pilares li::before{content:"✦ ";color:var(--avena)}
+
+  section{padding:80px 0}
+  .titulo{text-align:center;max-width:640px;margin:0 auto 46px}
+  .titulo h2{font-size:clamp(2rem,4vw,2.8rem);margin-top:8px}
+  .titulo p{color:var(--suave);margin-top:12px}
+
+  /* Torta destacada */
+  .destacada{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .destacada img{border-radius:18px;aspect-ratio:4/5;object-fit:cover;width:100%}
+  .destacada h2{font-size:clamp(2rem,4vw,2.7rem)}
+  .destacada .script{font-size:2.2rem}
+  .ingredientes{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
+  .ingredientes span{background:#fff;border:1px solid var(--avena);border-radius:30px;padding:6px 14px;font-size:.85rem}
+  .dato{display:flex;gap:28px;margin:8px 0 26px;flex-wrap:wrap}
+  .dato div{font-size:.85rem;color:var(--suave)}
+  .dato strong{display:block;font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--verde);font-weight:500}
+  .formatos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:26px}
+  .formatos div{background:#fff;border-radius:14px;padding:16px;font-size:.88rem}
+  .formatos b{display:block;color:var(--verde);margin-bottom:4px}
+  .nota{font-size:.78rem;color:var(--suave)}
+  @media(max-width:820px){.destacada{grid-template-columns:1fr}}
+
+  /* Productos */
+  .productos{background:#fff}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--crema);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+  .card .foto{aspect-ratio:4/3;background:var(--avena);display:flex;align-items:center;justify-content:center}
+  .card .foto img{width:100%;height:100%;object-fit:cover}
+  .card .foto.color{background:linear-gradient(135deg,var(--salvia),var(--verde))}
+  .card .foto.color.b{background:linear-gradient(135deg,var(--avena),#b99d72)}
+  .card .foto.color.c{background:linear-gradient(135deg,#6f6ea3,var(--arandano))}
+  .card .foto .script{color:var(--crema);font-size:2.6rem}
+  .card .txt{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+  .card h3{font-size:1.35rem}
+  .card p{font-size:.9rem;color:var(--suave);margin:8px 0 16px;flex:1}
+  .card a{font-size:.85rem;font-weight:600;color:var(--verde);text-decoration:none}
+  @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:580px){.grid{grid-template-columns:1fr}}
+
+  /* Desayuno */
+  .desayuno{background:var(--verde);color:var(--crema);border-radius:28px;padding:56px 40px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+  .desayuno h2{color:var(--crema);font-size:clamp(2rem,4vw,2.8rem)}
+  .desayuno .script{color:var(--avena);font-size:2.3rem}
+  .desayuno ul{list-style:none;margin:20px 0 28px}
+  .desayuno li{padding:10px 0;border-bottom:1px solid rgba(245,239,228,.2)}
+  .desayuno li::before{content:"✦  ";color:var(--avena)}
+  .desayuno .btn{background:var(--crema);color:var(--verde)}
+  .desayuno img{border-radius:18px;aspect-ratio:1;object-fit:cover}
+  @media(max-width:820px){.desayuno{grid-template-columns:1fr;padding:40px 24px}}
+
+  /* Cómo pedir */
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:p}
+  .paso{text-align:center;padding:10px}
+  .paso::before{counter-increment:p;content:counter(p);display:flex;align-items:center;justify-content:center;width:54px;height:54px;margin:0 auto 14px;border-radius:50%;border:1.5px solid var(--salvia);font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--verde)}
+  .paso h3{font-size:1.2rem}
+  .paso p{font-size:.9rem;color:var(--suave);margin-top:6px}
+  @media(max-width:700px){.pasos{grid-template-columns:1fr}}
+
+  /* Negocios */
+  .negocios{background:var(--avena)}
+  .negocios .box{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+  .negocios img{border-radius:18px;aspect-ratio:4/5;object-fit:cover}
+  .negocios h2{font-size:clamp(2rem,4vw,2.6rem)}
+  .negocios ul{list-style:none;margin:18px 0 28px}
+  .negocios li{padding:8px 0 8px 26px;position:relative}
+  .negocios li::before{content:"✓";position:absolute;left:0;color:var(--verde);font-weight:600}
+  @media(max-width:820px){.negocios .box{grid-template-columns:1fr}}
+
+  /* Galería */
+  .galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .galeria img{border-radius:14px;aspect-ratio:4/5;object-fit:cover;width:100%}
+
+  footer{background:var(--verde);color:var(--crema);text-align:center;padding:50px 22px 40px}
+  footer .logo{color:var(--crema);font-size:1.8rem}
+  footer .script{color:var(--avena);font-size:1.9rem;display:block;margin:4px 0 18px}
+  footer p{font-size:.82rem;opacity:.8;margin-top:6px}
+  footer a{color:var(--avena)}
+
+  /* Botón flotante WhatsApp */
+  .wa{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.22);z-index:20}
+  .wa svg{width:30px;height:30px;fill:#fff}
+</style>
+</head>
+<body>
+
+<!-- =====================================================
+     ✏️  PARA EDITAR RÁPIDO
+     1) Tu número de WhatsApp y tu Instagram están al final
+        de esta página, en "CONFIGURACIÓN" (busca: NUMERO_WHATSAPP).
+     2) Los textos se cambian directamente donde aparecen.
+     3) Las fotos están en la carpeta img/ (reemplázalas
+        con el mismo nombre para cambiarlas).
+     ===================================================== -->
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">Fit <span>Option</span></a>
+    <nav class="nav-links">
+      <a href="#torta">La torta</a>
+      <a href="#productos">Productos</a>
+      <a href="#desayuno">Desayuno fit</a>
+      <a href="#negocios">Para negocios</a>
+    </nav>
+    <a class="btn btn-verde" data-wa="Hola Fit Option 💚 quiero hacer un pedido" href="#">Pedir</a>
+  </div>
+</header>
+
+<!-- PORTADA -->
+<div class="wrap hero">
+  <div>
+    <span class="eyebrow">Repostería fit · Bogotá</span>
+    <h1>Tu antojo, <span class="script">versión fit</span></h1>
+    <p>Postres con proteína y sin azúcar añadida, hechos con ingredientes reales. Para que te des el gusto sin limitarte.</p>
+    <div class="hero-btns">
+      <a class="btn btn-verde" data-wa="Hola Fit Option 💚 quiero pedir la torta fit de banano y arándanos" href="#">Pedir por WhatsApp</a>
+      <a class="btn btn-linea" href="#productos">Ver productos</a>
+    </div>
+  </div>
+  <div class="hero-img"><img src="img/torta-hero.jpg" alt="Porción de torta fit de banano y arándanos"></div>
+</div>
+
+<div class="pilares">
+  <ul class="wrap">
+    <li>Sin azúcar añadida</li>
+    <li>Con proteína</li>
+    <li>Ingredientes reales</li>
+    <li>Hecho a mano</li>
+  </ul>
+</div>
+
+<!-- TORTA DESTACADA -->
+<section id="torta">
+  <div class="wrap destacada">
+    <img src="img/torta-miga.jpg" alt="Interior húmedo de la torta con arándanos">
+    <div>
+      <span class="eyebrow">Nuestro producto estrella</span>
+      <h2>Torta Fit de Banano & Arándanos</h2>
+      <span class="script">húmeda por dentro, dorada por fuera</span>
+      <div class="ingredientes">
+        <span>Avena integral</span><span>Banano maduro</span><span>Yogur griego</span>
+        <span>Huevo</span><span>Arándanos frescos</span><span>Canela</span>
+        <span>Vainilla</span><span>Stevia</span>
+      </div>
+      <div class="dato">
+        <div><strong>≈ 180</strong>kcal por porción</div>
+        <div><strong>0 g</strong>azúcar añadida</div>
+      </div>
+      <div class="formatos">
+        <div><b>Porción para llevar</b>Empacada individual con su etiqueta, lista para el antojo de la tarde.</div>
+        <div><b>Torta entera</b>4 porciones para compartir o tener en casa toda la semana.</div>
+      </div>
+      <a class="btn btn-verde" data-wa="Hola Fit Option 💚 quiero la torta fit de banano y arándanos. ¿Porción o torta entera?" href="#">Quiero mi torta</a>
+      <p class="nota" style="margin-top:14px">Contiene huevo y lácteos. Endulzada con stevia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" class="productos">
+  <div class="wrap">
+    <div class="titulo">
+      <span class="eyebrow">Todo el menú</span>
+      <h2>Opciones fit para cada antojo</h2>
+      <p>Pídelos sueltos o encuéntralos en las pastelerías y cafés aliados.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="foto"><img src="img/torta-arandanos.jpg" alt="Torta fit con arándanos"></div>
+        <div class="txt"><h3>Torta Fit</h3><p>Banano, avena integral y arándanos frescos. En porción o torta entera.</p><a href="#" data-wa="Hola 💚 quiero pedir la Torta Fit">Pedir →</a></div>
+      </div>
+      <div class="card">
+        <div class="foto color c"><span class="script">Parfait</span></div>
+        <div class="txt"><h3>Parfait de Frutas</h3><p>Yogur griego con fresa, arándanos y kiwi. Fresco, cremoso y con proteína.</p><a href="#" data-wa="Hola 💚 quiero pedir el Parfait de fresa, arándanos y kiwi">Pedir →</a></div>
+      </div>
+      <div class="card">
+        <div class="foto color b"><span class="script">Pancakes</span></div>
+        <div class="txt"><h3>Pancakes con Proteína</h3><p>Hechos con la misma base de nuestra torta: avena, banano y huevo.</p><a href="#" data-wa="Hola 💚 quiero pedir los Pancakes con proteína">Pedir →</a></div>
+      </div>
+      <div class="card">
+        <div class="foto color"><span class="script">Pan fit</span></div>
+        <div class="txt"><h3>Pan Fit</h3><p>Para tus desayunos y onces, sin renunciar a lo rico.</p><a href="#" data-wa="Hola 💚 quiero pedir Pan fit">Pedir →</a></div>
+      </div>
+      <div class="card">
+        <div class="foto color b"><span class="script">Quesitos</span></div>
+        <div class="txt"><h3>Quesitos Fit</h3><p>El clásico de la panadería, en versión fit.</p><a href="#" data-wa="Hola 💚 quiero pedir Quesitos fit">Pedir →</a></div>
+      </div>
+      <div class="card">
+        <div class="foto color c"><span class="script">Chocolyne</span></div>
+        <div class="txt"><h3>Chocolyne</h3><p>La bebida perfecta para acompañar tu desayuno fit.</p><a href="#" data-wa="Hola 💚 quiero pedir Chocolyne">Pedir →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESAYUNO FIT -->
+<section id="desayuno">
+  <div class="wrap">
+    <div class="desayuno">
+      <div>
+        <span class="eyebrow" style="color:var(--avena)">Combo de la mañana</span>
+        <h2>Desayuno Fit</h2>
+        <span class="script">empieza el día sin culpa</span>
+        <ul>
+          <li>Pancakes con proteína</li>
+          <li>Huevos al gusto</li>
+          <li>Pan fit</li>
+          <li>Chocolyne</li>
+        </ul>
+        <a class="btn" data-wa="Hola Fit Option 💚 quiero pedir el Desayuno Fit" href="#">Pedir mi desayuno</a>
+      </div>
+      <img src="img/torta-arriba.jpg" alt="Torta fit vista desde arriba">
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO PEDIR -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="titulo"><span class="eyebrow">Fácil y rápido</span><h2>¿Cómo pedir?</h2></div>
+    <div class="pasos">
+      <div class="paso"><h3>Elige tu antojo</h3><p>Torta, parfait, pancakes o el desayuno completo.</p></div>
+      <div class="paso"><h3>Escríbenos</h3><p>Toca cualquier botón y te llega el pedido listo por WhatsApp.</p></div>
+      <div class="paso"><h3>Disfruta</h3><p>Coordinamos contigo la entrega en Bogotá.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA NEGOCIOS -->
+<section id="negocios" class="negocios">
+  <div class="wrap box">
+    <img src="img/torta-lateral.jpg" alt="Porción de torta fit lista para vitrina">
+    <div>
+      <span class="eyebrow" style="color:var(--verde)">Pastelerías y cafés</span>
+      <h2>Lleva Fit Option a tu vitrina</h2>
+      <p style="margin-top:14px">Cada vez más clientes buscan algo saludable y se van sin comprar. Con Fit Option completas tu oferta sin cambiar tu operación.</p>
+      <ul>
+        <li>Torta entera para cortar y servir en mostrador</li>
+        <li>Porciones empacadas y etiquetadas para llevar</li>
+        <li>Parfaits listos para tu nevera</li>
+        <li>Opción de desayuno fit para tu carta</li>
+        <li>Pedido semanal según tu rotación</li>
+      </ul>
+      <a class="btn btn-verde" data-wa="Hola Fit Option 💚 tengo un negocio y quiero conocer la propuesta para tener sus productos" href="#">Quiero Fit Option en mi negocio</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section>
+  <div class="wrap">
+    <div class="titulo"><span class="eyebrow">Hecho de verdad</span><h2>Así se ve tu antojo</h2></div>
+    <div class="galeria">
+      <img src="img/torta-frente.jpg" alt="Torta fit con arándanos frescos">
+      <img src="img/torta-hero.jpg" alt="Porción de torta fit">
+      <img src="img/torta-arandanos.jpg" alt="Torta fit y arándanos">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Fit Option</div>
+  <span class="script">Tu antojo, versión fit</span>
+  <a class="btn" style="background:var(--crema);color:var(--verde)" data-wa="Hola Fit Option 💚" href="#">Escríbenos por WhatsApp</a>
+  <p style="margin-top:22px">Instagram <a id="ig-link" href="#">@fitoption</a> · Bogotá, Colombia</p>
+  <p>© <span id="anio"></span> Fit Option</p>
+</footer>
+
+<a class="wa" data-wa="Hola Fit Option 💚" href="#" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.2c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 23.1c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.3 1.3-4-.3-.4c-1.1-1.7-1.7-3.6-1.7-5.6C5.4 9.8 10.2 5.1 16 5.1s10.6 4.7 10.6 10.5S21.8 26.1 16 26.1zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+  /* ================== CONFIGURACIÓN ==================
+     Cambia aquí tu número (con 57, sin + ni espacios)
+     y tu usuario de Instagram (sin @).               */
+  const NUMERO_WHATSAPP = "573000000000";
+  const INSTAGRAM = "fitoption";
+  /* =================================================== */
+
+  document.querySelectorAll('[data-wa]').forEach(a => {
+    a.href = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(a.dataset.wa);
+    a.target = "_blank"; a.rel = "noopener";
+  });
+  const ig = document.getElementById('ig-link');
+  ig.href = "https://instagram.com/" + INSTAGRAM; ig.textContent = "@" + INSTAGRAM;
+  document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
